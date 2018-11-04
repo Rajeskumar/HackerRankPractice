@@ -3,8 +3,6 @@
  */
 package com.hackerRnk.practice;
 
-import java.util.Scanner;
-
 public class Solution2 {
 
 	static void minimumBribes(int[] q) {
