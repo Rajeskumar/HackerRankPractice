@@ -6,7 +6,8 @@ import java.io.IOException;
 
 Given an integer, , find and print the number of letter a's in the first  letters of Lilah's infinite string.
 
-For example, if the string  and , the substring we consider is , the first  characters of her infinite string. There are  occurrences of a in the substring.
+For example, if the string  and , the substring we consider is , the first  characters of her infinite string. 
+There are  occurrences of a in the substring.
  */
 public class RepeatedStringsProblem {
 
@@ -26,8 +27,8 @@ public class RepeatedStringsProblem {
     	return repeatedString;
     }
     public static void main(String[] args) throws IOException {
-    	String s = "a";    
-        long n = 1000000000;
+    	String s = "abbacc";    
+        long n = 10;
         
         System.out.print("No of Jumps :"+repeatedString(s,n));
 

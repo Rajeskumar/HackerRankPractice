@@ -26,12 +26,15 @@ public class UmbrellaProblem {
 	 */
 	public static void main(String[] args) {
 		int N = 22;
-		Integer [] umbrella = {2,1,3};
+		Integer [] umbrella = {2,3};
 		
 		int noOfUmbrella = solveUmbrella(N,umbrella);
 		
+		
 		System.out.println(noOfUmbrella);
 
+		int[] umbr = {2,3};
+		System.out.println(minUmbrellaCount(N, umbr));
 	}
 
 	/*
@@ -44,18 +47,61 @@ public class UmbrellaProblem {
 		int totalUmb=0;
 		int i=0;
 		for(int umb:umbrella) {
-			if(n%umb==0) {
-				return (totalUmb+=n/umb);
-			}else if(i<umbrella.length -1) {
-				totalUmb+=n/umb;
-				n=n%umb;
-			}else{
-				return -1;
-			}
-			i+=1;
+				if(n%umb==0) {
+					return (totalUmb+=n/umb);
+				}else if(i<umbrella.length -1) {
+					totalUmb+=n/umb;
+					n=n%umb;
+				}else{
+					return -1;
+				}
+				i+=1;
+			
 		}
 		
 		return totalUmb;
+	}
+	
+	private static int minUmbrellaCount(int n, int[] arr) {
+		int count = 0;
+		int counter = 0;
+		
+		//{1,3,5,6,4}
+		for(int k = 1; k < arr.length; k++){
+			
+			for(int i = 0; i <= k ; i++) {
+					if(arr[i] < arr[k]) {
+						int a = arr[i];
+						arr[i] = arr[k];
+						arr[k] = a;
+					}
+				}
+			
+		}
+		
+		for(int x : arr) {
+
+			int d = (n - count)/x;
+			if(d > 0 && count + (x * d) <= n) {
+				counter += d;
+				count += (x * d);
+				
+			}
+			/*if(count+x <= n){
+				count += x;
+				counter++;
+			}*/
+			if(count == n) {
+				break;
+			}
+
+		}
+		if(count != n) {
+			counter = -1;
+		}
+		
+		
+		return counter;
 	}
 
 }
