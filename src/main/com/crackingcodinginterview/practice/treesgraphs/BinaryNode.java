@@ -13,7 +13,7 @@ public class BinaryNode {
         parent = null;
     }
 
-    void printNode(){
+    public void printNode(){
         System.out.println("Node: "+value);
     }
 }

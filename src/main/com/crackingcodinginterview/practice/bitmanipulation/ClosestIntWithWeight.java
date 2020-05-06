@@ -7,10 +7,11 @@ package main.com.crackingcodinginterview.practice.bitmanipulation;
  * but not equals. Difference between the numbers should be closest.
  * For input 6, output will be 5.
  *
+ * BUGGYYYY
  */
 public class ClosestIntWithWeight {
 
-    public long closestIntSameBitCount(long x){
+    public int closestIntSameBitCount(int x){
 
         /*
         Hint is to just swap the right most two bits which differs.
@@ -18,7 +19,45 @@ public class ClosestIntWithWeight {
         To do that, Extract the lowest set bit and right shift by one and add it to removed lowest set bit of x.
          */
 
-        return ((x & ~(x-1)) >>> 1) + (x & (x-1));
+        int tempX = x;
+        if(x == 0) return 0; // x =0
+        if(~x == 0) {
+            int numBits = 0;
+            while (tempX > 0){
+                numBits++;
+                tempX >>=1;
+            }
 
+            x = x<<1;
+            x = x+1;
+            tempX = 1 << (numBits-1);
+
+
+            return x^tempX;
+        }
+
+        boolean bitChanged = false;
+        int previousBit = x&1;
+        int currentBit = 0;
+        int bitIdx = 0;
+        while( !bitChanged && tempX > 0){
+            tempX >>=1;
+            bitIdx++;
+            currentBit = tempX&1;
+            if(previousBit != currentBit){
+                bitChanged = true;
+            }
+        }
+        return swapBits(x, bitIdx);
+
+    }
+
+    int swapBits (int x, int i){
+
+        int temp = 1 << i;
+        x = x^temp;
+        temp = 1 << (i-1);
+        x = x ^ temp;
+        return x;
     }
 }

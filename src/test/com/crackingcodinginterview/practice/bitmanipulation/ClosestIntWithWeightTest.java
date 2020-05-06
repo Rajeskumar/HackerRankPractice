@@ -19,14 +19,42 @@ class ClosestIntWithWeightTest {
     @Test
     void closestIntSameBitCount() {
 
-        long input = 92;
-        long expected = 90;
+        int input = 92;
+        int expected = 90;
 
-        long actual = closestIntWithWeight.closestIntSameBitCount(input);
+        int actual = closestIntWithWeight.closestIntSameBitCount(input);
 
         System.out.println("Input  : "+Long.toBinaryString(input)+ ", Decimal: "+input);
         System.out.println("Actual : "+Long.toBinaryString(actual)+", Decimal: "+actual);
         Assertions.assertEquals(actual, expected);
+
+    }
+
+    @Test
+    void closestIntSameBitCount_first1andthen0() {
+
+        int input = 5;
+        int expected = 6;
+
+        int actual = closestIntWithWeight.closestIntSameBitCount(input);
+
+        System.out.println("Input  : "+Long.toBinaryString(input)+ ", Decimal: "+input);
+        System.out.println("Actual : "+Long.toBinaryString(actual)+", Decimal: "+actual);
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    void closestIntSameBitCount_all1s() {
+
+        int input = 7;
+        int expected = 11;
+
+        int actual = closestIntWithWeight.closestIntSameBitCount(input);
+
+        System.out.println("Input  : "+Long.toBinaryString(input)+ ", Decimal: "+input);
+        System.out.println("Actual : "+Long.toBinaryString(actual)+", Decimal: "+actual);
+        Assertions.assertEquals(expected, actual);
 
     }
 }

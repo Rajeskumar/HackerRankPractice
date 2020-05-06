@@ -20,59 +20,30 @@ public class LargestNumber {
 
     public String largestNumber(int[] nums) {
 
-        Comparator<Integer> comparator = new Comparator<Integer>() {
+        String[] strings = new String[nums.length];
+
+        for(int i=0;i<strings.length;i++){
+            strings[i] = String.valueOf(nums[i]);
+        }
+
+        Comparator<String> comparator = new Comparator<String>() {
             @Override
-            public int compare(Integer a, Integer b) {
-                if(a < 10 && b < 10){
-                    return b - a;
-                }else{
-                    List<Integer> aDigits = convertToDigits(a);
-                    List<Integer> bDigits = convertToDigits(b);
-
-                    int aIdx = aDigits.size();
-                    int bIdx = bDigits.size();
-
-                    while(aIdx > -1 && bIdx > -1 ){
-                        if(aDigits.get(aIdx) == bDigits.get(bIdx)){
-                            aIdx--;
-                            bIdx--;
-                            continue;
-                        }else{
-                            return bDigits.get(bIdx) - aDigits.get(aIdx);
-                        }
-                    }
-                    return a - b;
-                }
-            }
-
-            private List<Integer> convertToDigits(Integer a) {
-                List<Integer> digits = new ArrayList<>();
-
-                while (a > 9){
-                    if(a == 10){
-                        digits.add(0);
-                        digits.add(1);
-                        return digits;
-                    }else{
-                        int digit = a%10;
-                        digits.add(digit);
-                        a = a/10;
-                    }
-                }
-                digits.add(a);
-
-                return digits;
-
+            public int compare(String a, String b) {
+                String sum1 = a+b;
+                String sum2 = b+a;
+                return sum2.compareTo(sum1);
             }
 
         };
 
-        nums = Arrays.stream(nums).boxed().sorted(comparator).mapToInt(i -> i).toArray();
+        Arrays.sort(strings, comparator);
+
+        if(strings[0].equalsIgnoreCase("0")) return "0";
 
         StringBuilder sb = new StringBuilder();
 
-        for(int nos : nums){
-            sb.append(nos);
+        for(String str : strings){
+            sb.append(str);
         }
 
         return sb.toString();
