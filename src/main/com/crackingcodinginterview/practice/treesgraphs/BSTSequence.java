@@ -23,7 +23,7 @@ public class BSTSequence {
         List<BinaryNode> nodesToVisitAtThisLevel = new ArrayList<>();
         ArrayList<List<Integer>> newPossibleArray = new ArrayList<>();
 
-        for(BinaryNode visitNode: nodesToVisit){
+        for(BinaryNode<Integer> visitNode: nodesToVisit){
             int rootVal = visitNode.value;
             int rightVal = -1;
             int leftVal = -1;

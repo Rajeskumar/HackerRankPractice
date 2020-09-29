@@ -6,7 +6,7 @@ package main.com.crackingcodinginterview.practice.treesgraphs;
 public class ValidateBST {
 
     //TODO not fully working.
-    public boolean validateBST(BinaryNode root){
+    public boolean validateBST(BinaryNode<Integer> root){
 
         boolean isBST = true;
 

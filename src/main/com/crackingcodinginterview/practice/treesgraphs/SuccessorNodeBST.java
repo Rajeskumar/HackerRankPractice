@@ -17,7 +17,7 @@ public class SuccessorNodeBST {
         }
     }
 
-    private BinaryNode findParentSuccessor(BinaryNode node) {
+    private BinaryNode findParentSuccessor(BinaryNode<Integer> node) {
         if(node.parent == null) return null;
         if(node.parent.value > node.value){
             return node.parent;

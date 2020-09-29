@@ -48,7 +48,7 @@ public class CustomBinaryNode {
         return iterateAndFindNode(root, val);
     }
 
-    private BinaryNode iterateAndFindNode(BinaryNode node, int val) {
+    private BinaryNode iterateAndFindNode(BinaryNode<Integer> node, int val) {
         if(node == null) return null;
         if(node.value == val) return node;
 
